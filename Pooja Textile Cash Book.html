@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pooja Textile Cash Book</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f1f3fa;--card:#fff;--tx:#14213d;--mu:#66708a;--ac:#c2255c;--ac2:#e64980;--gold:#f2b134;--bd:#e3e7f3;--gr:#12803f;--rd:#d6283f;--am:#c26a00;--nv:#0b2545;--sh:0 6px 18px rgba(11,37,69,.09)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1226;--card:#131d3a;--tx:#eef1fb;--mu:#99a4c4;--ac:#ff7aa8;--ac2:#ff9ec0;--gold:#ffc65a;--bd:#243158;--gr:#4cd08a;--rd:#ff7b8b;--am:#ffb347;--nv:#060d1f;--sh:none}}
+:root[data-theme="dark"]{--bg:#0a1226;--card:#131d3a;--tx:#eef1fb;--mu:#99a4c4;--ac:#ff7aa8;--ac2:#ff9ec0;--gold:#ffc65a;--bd:#243158;--gr:#4cd08a;--rd:#ff7b8b;--am:#ffb347;--nv:#060d1f;--sh:none}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+header{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;padding:18px 16px 40px;position:relative}
+header .t{font-weight:800;font-size:20px;letter-spacing:.3px}header .s{opacity:.85;font-size:12px;margin-top:2px}
+header i{position:absolute;right:16px;top:14px;font-style:normal;font-size:30px;opacity:.9}
+nav{display:flex;gap:4px;overflow-x:auto;padding:8px;background:var(--card);box-shadow:var(--sh);border-radius:16px;max-width:1000px;margin:-24px auto 0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 6px);z-index:5;width:calc(100% - 20px)}
+nav button{flex:none;border:0;background:none;color:var(--mu);padding:8px 13px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+nav button b{font-weight:400;margin-right:5px}
+nav button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff}
+main{max-width:1000px;margin:0 auto;padding:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;box-shadow:var(--sh)}
+.grid .card{border-top:3px solid var(--gold)}
+.k{color:var(--mu);font-size:12px;text-transform:uppercase;letter-spacing:.5px}.v{font-size:22px;font-weight:800;margin-top:2px}
+.g{color:var(--gr)}.r{color:var(--rd)}.a{color:var(--am)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.row>b{font-size:18px}
+.item{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--ac2);border-radius:14px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;box-shadow:var(--sh)}
+.item small{color:var(--mu);display:block}
+.btn{border:1px solid var(--ac);background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;padding:8px 14px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.o{background:none;color:var(--ac)}.btn.s{padding:5px 10px;font-size:13px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+input,select{width:100%;padding:9px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+label{display:block;font-size:12px;color:var(--mu);margin:8px 0 2px}
+dialog{border:0;border-radius:18px;background:var(--card);color:var(--tx);width:min(94vw,460px);max-height:90vh;box-shadow:0 20px 60px #0006}
+dialog::backdrop{background:#07201a99;backdrop-filter:blur(3px)}
+.ln{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-top:6px}
+.tag{font-size:11px;font-weight:700;padding:2px 9px;border-radius:10px;border:1px solid currentColor}
+@media(max-width:640px){main{padding:12px 10px}.item{flex-direction:column}}
+
+header{display:flex;align-items:center;gap:12px}header svg{flex:none;filter:drop-shadow(0 3px 6px #0004)}
+#bell{background:#fff3;border-radius:20px;padding:6px 11px;font-size:13px;font-weight:700}
+#bnav,#fab{display:none}
+@media(max-width:700px){
+body{font-size:16px;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+header{padding:calc(14px + env(safe-area-inset-top,0px)) 16px 26px;border-radius:0 0 26px 26px;position:sticky;top:0;z-index:6}
+header .t{font-size:19px}
+nav{display:none}
+main{padding:14px 12px}
+#bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:1px solid var(--bd);box-shadow:0 -6px 20px rgba(10,60,45,.14);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+#bnav button{flex:1;min-width:0;border:0;background:none;color:var(--mu);font:inherit;font-size:10.5px;font-weight:600;padding:4px 0;display:flex;flex-direction:column;align-items:center;gap:1px;position:relative;cursor:pointer}
+#bnav button b{font-size:20px;line-height:1.2;font-weight:400;filter:grayscale(1);opacity:.7}
+#bnav button.on{color:var(--ac)}#bnav button.on b{filter:none;opacity:1;transform:translateY(-2px)}
+#bnav button.on::before{content:"";position:absolute;top:-6px;width:26px;height:3px;border-radius:3px;background:var(--gold)}
+#bnav i{position:absolute;top:0;right:22%;background:var(--rd);color:#fff;font-style:normal;font-size:10px;min-width:16px;border-radius:8px;padding:0 4px}
+#fab{display:flex;position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:19;width:56px;height:56px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--gold),#f08a1d);color:#2a1a00;font-size:32px;font-weight:300;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(224,140,20,.45)}
+#fab[hidden]{display:none}
+.row>.btn{display:none}
+.grid{grid-template-columns:1fr 1fr}.grid .card:first-child{grid-column:1/-1;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0}.grid .card:first-child .k{color:#ffffffcc}.grid .card:first-child .v{font-size:30px;color:#fff}
+.v{font-size:19px}
+.item{flex-direction:column;align-items:stretch;border-radius:16px;padding:14px}
+.item .acts{justify-content:flex-start;padding-top:4px;border-top:1px dashed var(--bd);margin-top:2px}
+.btn.s{padding:9px 13px;font-size:14px;min-height:38px}.btn{min-height:42px}
+input,select{font-size:16px;padding:12px;min-height:46px}
+.ln{grid-template-columns:1fr 1fr}.ln select{grid-column:1/-1}
+dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:92vh;padding:18px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+dialog .acts .btn{flex:1}
+.row>b{font-size:19px}
+}
+
+header{background:radial-gradient(circle at 1px 1px,#ffffff14 1px,transparent 0) 0 0/14px 14px,linear-gradient(145deg,#0b2545,#13315c 55%,#7a1f55)!important;padding-bottom:44px}
+header .t{font-family:Georgia,'Times New Roman',serif;font-size:23px;letter-spacing:.6px;color:#ffe9a3}header .s{opacity:.8}
+#bell{background:#ffffff1f;border:1px solid #ffffff33;color:#fff}
+nav button.on,.btn{background:linear-gradient(135deg,var(--ac),var(--ac2))}
+.btn.o{background:none}
+.btn:active,#fab:active{transform:scale(.96)}
+.card{border-radius:20px}
+.grid .card{border:0;position:relative;overflow:hidden}
+.grid .card::after{content:"";position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:currentColor;opacity:.06}
+.grid .card:nth-child(1){background:linear-gradient(135deg,#d6336c,#7a1f5c 65%,#0b2545);color:#fff}.grid .card:nth-child(1) .k{color:#ffffffcc}.grid .card:nth-child(1) .v{color:#fff}
+.grid .card:nth-child(2){border-left:5px solid var(--gold)}.grid .card:nth-child(3){border-left:5px solid var(--rd)}.grid .card:nth-child(4){border-left:5px solid #3b82f6}
+.item{border-left:0;border-radius:18px}
+.who{display:flex;gap:11px;align-items:center}.who>span:last-child{min-width:0}
+.av{flex:none;width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;background:linear-gradient(135deg,#13315c,#3b5ba9)}
+.av.late{background:linear-gradient(135deg,#d6283f,#ff6b81)}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:2px 0 14px}
+.qa button{border:0;background:var(--card);color:var(--tx);border-radius:18px;padding:12px 4px;font:inherit;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:var(--sh);cursor:pointer}
+.qa i{font-style:normal;font-size:22px;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fff1d0,#ffd987)}
+.row>b{font-family:Georgia,serif}
+@media(max-width:700px){
+header{padding-bottom:34px;border-radius:0 0 30px 30px}
+.grid .card:first-child{background:linear-gradient(135deg,#d6336c,#7a1f5c 65%,#0b2545)!important}
+#bnav{border-radius:22px 22px 0 0}
+#bnav button.on::before{background:var(--ac)}
+#bnav button.on b{background:#ffe4ee;border-radius:12px;padding:0 12px;filter:none}
+#fab{background:linear-gradient(135deg,#ffd25e,#f2a20e)}
+}
+@media(prefers-color-scheme:dark){.qa i{background:#26335c}#bnav button.on b{background:#3a2140}}
+
+.srch{margin:0 0 12px;border-radius:14px;background:var(--card);box-shadow:var(--sh)}
+.chips{display:flex;gap:8px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px}
+.chips button{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--mu);padding:7px 15px;border-radius:20px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.chips button.on{background:var(--nv);color:#ffe9a3;border-color:var(--nv)}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:12px;background:var(--card);border-radius:20px;box-shadow:var(--sh);overflow:hidden}
+.sum>div{padding:12px 8px;text-align:center;border-right:1px solid var(--bd)}.sum>div:last-child{border:0}
+.sum span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mu)}.sum b{font-size:17px}
+.bar{height:7px;border-radius:6px;background:var(--bd);overflow:hidden}.bar span{display:block;height:100%;border-radius:6px}
+.hb{margin-top:10px}.hl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.dh{font-size:12px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin:14px 2px 8px}
+.item.ok{border-left:5px solid var(--gr)}.item.bad{border-left:5px solid var(--rd)}.item.mid{border-left:5px solid var(--gold)}
+.av.in{background:linear-gradient(135deg,#12803f,#43c07a)}
+.av.mini{width:24px;height:24px;border-radius:8px;font-size:13px;display:inline-flex;margin-right:6px;vertical-align:middle}
+@media(max-width:700px){.sum b{font-size:15px}.sum>div{padding:11px 4px}}
+</style></head><body>
+<header><svg viewBox="0 0 64 64" width="54" height="54" aria-label="Pooja Textile"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe9a3"/><stop offset=".55" stop-color="#f2b134"/><stop offset="1" stop-color="#c98114"/></linearGradient><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16345f"/><stop offset="1" stop-color="#0b2545"/></linearGradient></defs><circle cx="32" cy="32" r="30.5" fill="url(#g1)"/><circle cx="32" cy="32" r="26.5" fill="url(#g2)"/><circle cx="32" cy="32" r="24" fill="none" stroke="#f2b134" stroke-width=".6" stroke-dasharray="1.6 2.2"/><path d="M15 49c6-6 11-6 17 0s11 6 17 0" fill="none" stroke="#e64980" stroke-width="2.2" stroke-linecap="round"/><path d="M18 53c5-4 9-4 14 0s9 4 14 0" fill="none" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/><text x="32" y="43" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="33" font-weight="700" fill="url(#g1)">P</text><circle cx="32" cy="11.5" r="2.6" fill="#e64980"/></svg><div style="flex:1"><div class="t">Pooja Textile</div><div class="s">Namaste 🙏 · Sarees &amp; Suits Wholesale</div></div><span id="bell"></span></header>
+<nav id="nav"></nav><main id="app"></main>
+<div id="bnav"></div><button id="fab" aria-label="Add">+</button>
+<dialog id="dlg"><form method="dialog"><h3 id="mt" style="margin:0"></h3><div id="mb"></div>
+<div class="acts" style="margin-top:14px;justify-content:flex-end"><button class="btn o" value="x">Cancel</button><button class="btn" id="ok">Save</button></div></form></dialog>
+<script>
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9);
+const inr=n=>'₹'+Math.round(n||0).toLocaleString('en-IN'),today=()=>new Date().toISOString().slice(0,10);
+const dd=(a,b)=>Math.round((new Date(a)-new Date(b))/864e5),addD=(d,n)=>new Date(+new Date(d)+n*864e5).toISOString().slice(0,10);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function seed(){const t=today();return{shop:"Pooja Textile",
+parties:[{id:'v1',type:'vendor',name:'Surat Silks',phone:'9800000001',city:'Surat',gstin:''},{id:'v2',type:'vendor',name:'Banarasi Weavers',phone:'9800000002',city:'Varanasi',gstin:''},
+{id:'c1',type:'customer',name:'Lakshmi Textiles',phone:'9900000001',city:'Mysuru',gstin:''},{id:'c2',type:'customer',name:'Priya Fashions',phone:'9900000002',city:'Hubballi',gstin:''}],
+skus:[{id:'s1',code:'SAR-001',name:'Kanjivaram Silk Saree',cat:'Saree',vendor:'v2',cost:3200,price:4200,qty:12,low:5},{id:'s2',code:'SAR-002',name:'Cotton Printed Saree',cat:'Saree',vendor:'v1',cost:450,price:650,qty:3,low:10},{id:'s3',code:'SUT-001',name:'Salwar Suit Set',cat:'Suit',vendor:'v1',cost:700,price:1050,qty:40,low:10}],
+invoices:[{id:'i1',no:'INV-1',date:addD(t,-40),due:addD(t,-10),cust:'c1',gst:5,items:[{sku:'s1',qty:3,price:4200}],paid:5000},{id:'i2',no:'INV-2',date:addD(t,-5),due:addD(t,25),cust:'c2',gst:5,items:[{sku:'s3',qty:10,price:1050}],paid:0}],
+money:[{id:'m1',date:addD(t,-3),kind:'expense',cat:'Rent',desc:'Shop rent',amt:15000,paid:true,party:''},{id:'m2',date:addD(t,-12),kind:'liability',cat:'Purchase',desc:'Stock purchase',amt:40000,paid:false,party:'v1',due:addD(t,5)}],
+cash:[{id:'k1',date:addD(t,-30),type:'in',desc:'Opening capital',amt:100000},{id:'k2',date:addD(t,-3),type:'out',desc:'Shop rent',amt:15000},{id:'k3',date:addD(t,-35),type:'in',desc:'INV-1 part payment',amt:5000}]}}
+let S;try{S=JSON.parse(localStorage.getItem('sbk'))}catch(e){}if(!S)S=seed();
+const save=()=>{try{localStorage.setItem('sbk',JSON.stringify(S))}catch(e){}};
+const P=id=>S.parties.find(p=>p.id===id)||{name:'—'},K=id=>S.skus.find(s=>s.id===id)||{name:'—'};
+const sub=i=>i.items.reduce((a,x)=>a+x.qty*x.price,0),tot=i=>sub(i)*(1+i.gst/100),bal=i=>tot(i)-i.paid;
+const tabs=['Dashboard','Parties','Stock','Invoices','Expenses','Cash Book','Alerts'];let tab='Dashboard',pf='customer';
+const ic={Dashboard:'📊',Parties:'👥',Stock:'📦',Invoices:'🧾',Expenses:'💸','Cash Book':'💰',Alerts:'🔔'};$('#nav').innerHTML=tabs.map(t=>`<button data-t="${t}"><b>${ic[t]}</b>${t}</button>`).join('');
+$('#nav').onclick=e=>{if(e.target.closest('button')){tab=e.target.closest('button').dataset.t;render()}};
+function modal(t,body,ok){$('#mt').textContent=t;$('#mb').innerHTML=body;$('#ok').onclick=e=>{e.preventDefault();if(ok()!==false){$('#dlg').close();save();render()}};$('#dlg').showModal()}
+const f=(id,l,v='',t='text')=>`<label>${l}</label><input id="${id}" type="${t}" value="${esc(v)}">`;
+const sl=(id,l,o,v)=>`<label>${l}</label><select id="${id}">${o.map(([a,b])=>`<option value="${a}" ${a==v?'selected':''}>${esc(b)}</option>`).join('')}</select>`;
+const g=id=>$('#'+id).value,n=id=>+g(id)||0,del=(c,id)=>{if(confirm('Delete this entry?')){S[c]=S[c].filter(x=>x.id!==id);save();render()}};
+const cashIn=(type,desc,amt,date=today())=>S.cash.push({id:uid(),date,type,desc,amt});
+function debtors(){return S.parties.filter(p=>p.type==='customer').map(p=>{const inv=S.invoices.filter(i=>i.cust===p.id&&bal(i)>0.5);const out=inv.reduce((a,i)=>a+bal(i),0);const od=inv.filter(i=>i.due<today());const days=od.length?Math.max(...od.map(i=>dd(today(),i.due))):0;return{p,out,od:od.reduce((a,i)=>a+bal(i),0),days,n:inv.length}}).filter(d=>d.out>0)}
+
+const SH={Dashboard:'Home',Invoices:'Bills',Expenses:'Expense','Cash Book':'Cash'};
+$('#bnav').innerHTML=tabs.map(t=>`<button data-t="${t}"><b>${ic[t]}</b>${SH[t]||t}${t==='Alerts'?'<i id="bd" hidden></i>':''}</button>`).join('');
+$('#bnav').onclick=e=>{const b=e.target.closest('button');if(b){tab=b.dataset.t;render();scrollTo(0,0)}};
+const FA={Parties:()=>partyForm(),Stock:()=>skuForm(),Invoices:()=>invForm(),Expenses:()=>moneyForm(),'Cash Book':()=>cashForm()};
+$('#fab').onclick=()=>FA[tab]&&FA[tab]();
+function brk(){const c={};S.money.forEach(m=>c[m.cat]=(c[m.cat]||0)+m.amt);const e=Object.entries(c).sort((a,b)=>b[1]-a[1]);if(!e.length)return'';return`<div class="card" style="margin-bottom:10px"><b>By category</b>${e.map(([k,v])=>hb(k,v,e[0][1],'var(--ac)')).join('')}</div>`}
+let q='',flt='All',lastTab='';
+const srch=ph=>`<input id="q" class="srch" placeholder="🔍 ${ph}" value="${esc(q)}" oninput="q=this.value;render();const e=$('#q');e.focus();e.setSelectionRange(q.length,q.length)">`;
+const chips=a=>`<div class="chips">${a.map(x=>`<button class="${flt===x?'on':''}" onclick="flt='${x}';render()">${x}</button>`).join('')}</div>`;
+const hb=(l,v,m,c)=>`<div class="hb"><div class="hl"><span>${esc(l)}</span><b>${inr(v)}</b></div><div class="bar"><span style="width:${Math.max(3,v/Math.max(m,1)*100)}%;background:${c}"></span></div></div>`;
+const hit=t=>t.toLowerCase().includes(q.toLowerCase());
+function render(){if(lastTab!==tab){q='';flt='All';lastTab=tab}document.querySelectorAll('nav button,#bnav button').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));$('#app').innerHTML=V[tab]();$('#fab').hidden=!FA[tab];const od=debtors().filter(x=>x.od>0).length;const bd=$('#bd');if(bd){bd.hidden=!od;bd.textContent=od}$('#bell').textContent=od?'🔔 '+od+' overdue':'✓ All clear'}
+const V={
+Dashboard(){const mo=today().slice(0,7),sales=S.invoices.filter(i=>i.date.slice(0,7)===mo).reduce((a,i)=>a+tot(i),0),exp=S.money.filter(m=>m.date.slice(0,7)===mo).reduce((a,m)=>a+m.amt,0),mx=Math.max(sales,exp,1);const d=debtors(),rec=d.reduce((a,x)=>a+x.out,0),pay=S.money.filter(m=>m.kind==='liability'&&!m.paid).reduce((a,m)=>a+m.amt,0),cb=S.cash.reduce((a,c)=>a+(c.type==='in'?c.amt:-c.amt),0),sv=S.skus.reduce((a,s)=>a+s.qty*s.cost,0),low=S.skus.filter(s=>s.qty<=s.low);
+return`<div class="grid"><div class="card"><div class="k">💰 Cash in hand</div><div class="v ${cb<0?'r':'g'}">${inr(cb)}</div></div><div class="card"><div class="k">📥 To receive</div><div class="v a">${inr(rec)}</div></div><div class="card"><div class="k">📤 To pay</div><div class="v r">${inr(pay)}</div></div><div class="card"><div class="k">📦 Stock value</div><div class="v">${inr(sv)}</div></div></div>
+<div class="qa"><button onclick="invForm()"><i>🧾</i>New Bill</button><button onclick="cashForm()"><i>💰</i>Cash Entry</button><button onclick="skuForm()"><i>📦</i>Add SKU</button><button onclick="tab='Alerts';render()"><i>🔔</i>Remind</button></div><div class="card"><b>⚠ Overdue payments</b>${d.filter(x=>x.od).map(x=>`<div class="row" style="margin:6px 0 0"><span>${esc(x.p.name)}</span><span class="r">${inr(x.od)} · ${x.days}d late</span></div>`).join('')||'<div class="k">None 🎉</div>'}</div>
+<div class="card" style="margin-top:10px"><b>📦 Low stock</b>${low.map(s=>`<div class="row" style="margin:6px 0 0"><span>${esc(s.name)}</span><span class="r">${s.qty} left</span></div>`).join('')||'<div class="k">All good</div>'}</div>`+`<div class="card" style="margin-top:10px"><b>📈 This month</b>${hb('Sales billed',sales,mx,'var(--gr)')}${hb('Expenses & purchases',exp,mx,'var(--rd)')}</div><div class="card" style="margin-top:10px"><b>🕘 Recent activity</b>${[...S.cash].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4).map(c=>`<div class="row" style="margin:8px 0 0"><span><span class="av mini ${c.type==='in'?'in':'late'}">${c.type==='in'?'↓':'↑'}</span> ${esc(c.desc)}</span><b class="${c.type==='in'?'g':'r'}">${c.type==='in'?'+':'−'}${inr(c.amt)}</b></div>`).join('')}</div>`},
+Parties(){const l=S.parties.filter(p=>p.type===pf&&hit(p.name+p.city+p.phone));return`<div class="row"><div class="acts"><button class="btn ${pf==='customer'?'':'o'}" onclick="pf='customer';render()">Customers</button><button class="btn ${pf==='vendor'?'':'o'}" onclick="pf='vendor';render()">Vendors</button></div><button class="btn" onclick="partyForm()">+ Add ${pf}</button></div>`+srch('Search name, city or phone')+
+l.map(p=>{const ex=pf==='customer'?S.invoices.filter(i=>i.cust===p.id).reduce((a,i)=>a+bal(i),0):S.money.filter(m=>m.party===p.id&&!m.paid).reduce((a,m)=>a+m.amt,0);return`<div class="item"><div class="who"><span class="av">${esc((p.name||"?")[0])}</span><span><b>${esc(p.name)}</b><small>${esc(p.city)} · ${esc(p.phone)} ${p.gstin?'· GST '+esc(p.gstin):''}</small></span></div><div class="acts"><span class="${ex?'r':'g'}">${pf==='customer'?'Due':'Payable'} ${inr(ex)}</span><a class="btn o s" href="tel:${esc(p.phone)}">📞</a><button class="btn o s" onclick="partyForm('${p.id}')">Edit</button><button class="btn o s" onclick="del('parties','${p.id}')">✕</button></div></div>`}).join('')||'<div class="k">Nothing yet</div>'},
+Stock(){const tv=S.skus.reduce((x,k)=>x+k.qty*k.cost,0),pcs=S.skus.reduce((x,k)=>x+k.qty,0);return`<div class="row"><b>SKU / Stock</b><button class="btn" onclick="skuForm()">+ Add SKU</button></div><div class="sum"><div><span>SKUs</span><b>${S.skus.length}</b></div><div><span>Pieces</span><b>${pcs}</b></div><div><span>Stock value</span><b>${inr(tv)}</b></div></div>`+chips(['All','Saree','Suit','Low stock'])+srch('Search name or code')+S.skus.filter(s=>(flt==='All'||(flt==='Low stock'?s.qty<=s.low:s.cat===flt))&&hit(s.name+s.code)).map(s=>`<div class="item ${s.qty<=s.low?'bad':'ok'}"><div><b>${esc(s.name)}</b><small>${esc(s.code)} · ${esc(s.cat)} · ${esc(P(s.vendor).name)}</small><small>Cost ${inr(s.cost)} · Sell ${inr(s.price)} · Margin ${s.price?Math.round((s.price-s.cost)/s.price*100):0}%</small><div class="bar" style="margin-top:6px;min-width:150px"><span style="width:${Math.min(100,s.qty/Math.max(s.low*3,1)*100)}%;background:${s.qty<=s.low?'var(--rd)':'var(--gr)'}"></span></div></div><div class="acts"><span class="tag ${s.qty<=s.low?'r':'g'}">${s.qty<=s.low?'LOW · ':''}${s.qty} pcs</span><button class="btn o s" onclick="skuForm('${s.id}')">Edit</button><button class="btn o s" onclick="del('skus','${s.id}')">✕</button></div></div>`).join('')||'<div class="k">No items</div>'},
+Invoices(){const B=S.invoices.reduce((a,i)=>a+tot(i),0),Rc=S.invoices.reduce((a,i)=>a+i.paid,0);return`<div class="row"><b>Invoices & Billing</b><button class="btn" onclick="invForm()">+ New invoice</button></div><div class="sum"><div><span>Billed</span><b>${inr(B)}</b></div><div><span>Received</span><b class="g">${inr(Rc)}</b></div><div><span>Pending</span><b class="r">${inr(B-Rc)}</b></div></div>`+chips(['All','Pending','Overdue','Paid'])+srch('Search invoice or customer')+[...S.invoices].reverse().filter(i=>{const b=bal(i);return(flt==='All'||(flt==='Paid'&&b<=.5)||(flt==='Pending'&&b>.5)||(flt==='Overdue'&&b>.5&&i.due<today()))&&hit(i.no+P(i.cust).name)}).map(i=>{const b=bal(i),late=b>0.5&&i.due<today();return`<div class="item ${b<=0.5?'ok':late?'bad':'mid'}"><div><b>${esc(i.no)} · ${esc(P(i.cust).name)}</b><small>${i.date} · due ${i.due} · ${i.items.map(x=>esc(K(x.sku).name)+' ×'+x.qty).join(', ')}</small><small>Total ${inr(tot(i))} (GST ${i.gst}%) · Paid ${inr(i.paid)}</small><div class="bar" style="margin-top:6px;min-width:150px"><span style="width:${Math.min(100,i.paid/tot(i)*100)}%;background:var(--gr)"></span></div></div><div class="acts"><span class="tag ${b<=0.5?'g':late?'r':'a'}">${b<=0.5?'PAID':late?'OVERDUE '+inr(b):'DUE '+inr(b)}</span>${b>0.5?`<button class="btn s" onclick="payForm('${i.id}')">Receive</button>`:''}<button class="btn o s" onclick="printInv('${i.id}')">Print</button><button class="btn o s" onclick="del('invoices','${i.id}')">✕</button></div></div>`}).join('')},
+Expenses(){const un=S.money.filter(m=>m.kind==='liability'&&!m.paid);return`<div class="row"><b>Expenses & Liabilities</b><button class="btn" onclick="moneyForm()">+ Add</button></div><div class="card" style="margin-bottom:10px">Total unpaid liabilities: <b class="r">${inr(un.reduce((a,m)=>a+m.amt,0))}</b> · Expenses this month: <b>${inr(S.money.filter(m=>m.kind==='expense'&&m.date.slice(0,7)===today().slice(0,7)).reduce((a,m)=>a+m.amt,0))}</b></div>`+brk()+chips(['All','Expense','Liability','Unpaid'])+[...S.money].reverse().filter(m=>flt==='All'||(flt==='Unpaid'?!m.paid:m.kind===flt.toLowerCase())).map(m=>`<div class="item ${m.paid?'ok':'bad'}"><div><b>${esc(m.desc)}</b><small>${m.date} · ${esc(m.cat)} ${m.party?'· '+esc(P(m.party).name):''} ${m.due&&!m.paid?'· due '+m.due:''}</small></div><div class="acts"><span class="tag ${m.kind==='expense'?'':'a'}">${m.kind}</span><b>${inr(m.amt)}</b>${m.paid?'<span class="tag g">PAID</span>':`<button class="btn s" onclick="payLiab('${m.id}')">Pay</button>`}<button class="btn o s" onclick="del('money','${m.id}')">✕</button></div></div>`).join('')},
+'Cash Book'(){let b=0;const r=[...S.cash].sort((x,y)=>x.date.localeCompare(y.date)).map(c=>({...c,b:b+=c.type==='in'?c.amt:-c.amt})).reverse();const i=S.cash.filter(c=>c.type==='in').reduce((a,c)=>a+c.amt,0),o=S.cash.filter(c=>c.type==='out').reduce((a,c)=>a+c.amt,0);
+return`<div class="grid"><div class="card"><div class="k">💰 Balance</div><div class="v">${inr(i-o)}</div></div><div class="card"><div class="k">↓ Total In</div><div class="v g">${inr(i)}</div></div><div class="card"><div class="k">↑ Total Out</div><div class="v r">${inr(o)}</div></div></div><div class="row"><b>Entries</b><button class="btn" onclick="cashForm()">+ Cash entry</button></div>`+srch('Search entries')+r.filter(c=>hit(c.desc)).map((c,j,a)=>(j===0||a[j-1].date!==c.date?`<div class="dh">${new Date(c.date).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}</div>`:'')+`<div class="item ${c.type==='in'?'ok':'bad'}"><div class="who"><span class="av ${c.type==='in'?'in':'late'}">${c.type==='in'?'↓':'↑'}</span><span><b>${esc(c.desc)}</b><small>Balance ${inr(c.b)}</small></span></div><div class="acts"><b class="${c.type==='in'?'g':'r'}" style="font-size:17px">${c.type==='in'?'+':'−'}${inr(c.amt)}</b><button class="btn o s" onclick="del('cash','${c.id}')">✕</button></div></div>`).join('')},
+Alerts(){const d=debtors().sort((a,b)=>b.days-a.days);const DEF='Namaste {name}, a gentle reminder from Pooja Textile: Rs.{amt} is pending with us. Kindly arrange payment at your earliest. Thank you!';const T=S.tpl||DEF;return`<div class="sum"><div><span>Total due</span><b class="a">${inr(d.reduce((a,x)=>a+x.out,0))}</b></div><div><span>Overdue</span><b class="r">${inr(d.reduce((a,x)=>a+x.od,0))}</b></div><div><span>Customers</span><b>${d.length}</b></div></div><div class="card" style="margin-bottom:10px"><label>Message template (use {name} and {amt})</label><input id="tpl" value="${esc(T)}" onchange="S.tpl=this.value;save();render()"></div>`+
+d.map(x=>{const m=encodeURIComponent(T.replace('{name}',x.p.name).replace('{amt}',Math.round(x.out)));const ph=x.p.phone.replace(/\D/g,'');return`<div class="item"><div class="who"><span class="av ${x.od?'late':''}">${esc((x.p.name||"?")[0])}</span><span><b>${esc(x.p.name)}</b><small>${x.n} open invoice(s) · ${x.days?`<span class="r">${x.days} days overdue</span>`:'not yet due'}</small></span></div><div class="acts"><span class="tag ${x.days>30?'r':x.days>0?'a':'g'}">${x.days>30?'URGENT':x.days>0?'OVERDUE':'UPCOMING'}</span><b class="${x.od?'r':'a'}">${inr(x.out)}</b><a class="btn s" href="tel:${ph}">📞 Call</a><a class="btn o s" href="sms:${ph}?body=${m}">💬 SMS</a><a class="btn o s" target="_blank" rel="noopener" href="https://wa.me/${ph.length===10?'91'+ph:ph}?text=${m}">WhatsApp</a></div></div>`}).join('')||'<div class="k">No pending dues 🎉</div>'}};
+function partyForm(id){const p=S.parties.find(x=>x.id===id)||{};modal((id?'Edit ':'Add ')+pf,f('a','Name',p.name)+f('b','Phone',p.phone,'tel')+f('c','City',p.city)+f('d','GSTIN',p.gstin),()=>{if(!g('a'))return false;const o={id:p.id||uid(),type:p.type||pf,name:g('a'),phone:g('b'),city:g('c'),gstin:g('d')};id?Object.assign(p,o):S.parties.push(o)})}
+function skuForm(id){const s=S.skus.find(x=>x.id===id)||{cat:'Saree'};const vs=[['','—'],...S.parties.filter(p=>p.type==='vendor').map(p=>[p.id,p.name])];
+modal('SKU',f('a','Code',s.code)+f('b','Name',s.name)+sl('c','Category',['Saree','Suit','Dress material','Other'].map(x=>[x,x]),s.cat)+sl('d','Vendor',vs,s.vendor)+f('e','Cost price',s.cost,'number')+f('h','Selling price',s.price,'number')+f('q','Quantity',s.qty,'number')+f('l','Low-stock alert at',s.low??5,'number'),()=>{if(!g('b'))return false;const o={id:s.id||uid(),code:g('a'),name:g('b'),cat:g('c'),vendor:g('d'),cost:n('e'),price:n('h'),qty:n('q'),low:n('l')};id?Object.assign(s,o):S.skus.push(o)})}
+function lineRow(){const d=document.createElement('div');d.className='ln';d.innerHTML=`<select>${S.skus.map(s=>`<option value="${s.id}">${esc(s.name)} (${s.qty})</option>`).join('')}</select><input type="number" placeholder="Qty" value="1"><input type="number" placeholder="Rate">`;const sel=d.children[0];const fill=()=>d.children[2].value=K(sel.value).price;sel.onchange=fill;fill();$('#lines').appendChild(d)}
+function invForm(){const cs=S.parties.filter(p=>p.type==='customer');if(!cs.length||!S.skus.length){alert('Add a customer and a SKU first');return}
+modal('New invoice',sl('c','Customer',cs.map(p=>[p.id,p.name]))+f('dt','Date',today(),'date')+f('cr','Credit days',30,'number')+f('gs','GST %',5,'number')+'<label>Items</label><div id="lines"></div><button type="button" class="btn o s" style="margin-top:6px" id="al">+ line</button>'+f('pd','Paid now (₹)',0,'number'),()=>{const items=[...$('#lines').children].map(r=>({sku:r.children[0].value,qty:+r.children[1].value||0,price:+r.children[2].value||0})).filter(x=>x.qty>0);if(!items.length)return false;for(const x of items){if(K(x.sku).qty<x.qty&&!confirm(K(x.sku).name+' has only '+K(x.sku).qty+' in stock. Continue?'))return false}
+const inv={id:uid(),no:'INV-'+(S.invoices.length+1+(S.seq=(S.seq||0)+0)),date:g('dt'),due:addD(g('dt'),n('cr')),cust:g('c'),gst:n('gs'),items,paid:0};inv.no='INV-'+(Math.max(0,...S.invoices.map(i=>+i.no.slice(4)||0))+1);items.forEach(x=>K(x.sku).qty-=x.qty);const pd=Math.min(n('pd'),tot(inv));inv.paid=pd;if(pd>0)cashIn('in',inv.no+' payment · '+P(inv.cust).name,pd,inv.date);S.invoices.push(inv)});$('#al').onclick=lineRow;lineRow()}
+function payForm(id){const i=S.invoices.find(x=>x.id===id);modal('Receive payment · '+i.no,f('a','Amount',Math.round(bal(i)),'number'),()=>{const a=Math.min(n('a'),bal(i));if(a<=0)return false;i.paid+=a;cashIn('in',i.no+' payment · '+P(i.cust).name,a)})}
+function moneyForm(){const vs=[['','—'],...S.parties.filter(p=>p.type==='vendor').map(p=>[p.id,p.name])];modal('Expense / Liability',sl('k','Type',[['expense','Expense (paid now)'],['liability','Liability (pay later)']])+f('d','Description')+sl('c','Category',['Rent','Salary','Electricity','Transport','Purchase','Loan EMI','Packing','Other'].map(x=>[x,x]))+f('a','Amount',0,'number')+sl('p','Vendor / party',vs)+f('du','Due date (liabilities)',addD(today(),15),'date'),()=>{if(!g('d')||n('a')<=0)return false;const e=g('k')==='expense';S.money.push({id:uid(),date:today(),kind:g('k'),cat:g('c'),desc:g('d'),amt:n('a'),paid:e,party:g('p'),due:g('du')});if(e)cashIn('out',g('d'),n('a'))})}
+function payLiab(id){const m=S.money.find(x=>x.id===id);if(!confirm('Mark '+m.desc+' ('+inr(m.amt)+') as paid?'))return;m.paid=true;cashIn('out',m.desc+(m.party?' · '+P(m.party).name:''),m.amt);save();render()}
+function cashForm(){modal('Cash entry',sl('t','Type',[['in','Cash In'],['out','Cash Out']])+f('d','Description')+f('a','Amount',0,'number')+f('dt','Date',today(),'date'),()=>{if(!g('d')||n('a')<=0)return false;cashIn(g('t'),g('d'),n('a'),g('dt'))})}
+function printInv(id){const i=S.invoices.find(x=>x.id===id),c=P(i.cust),w=window.open('','_blank');if(!w){alert('Pop-up blocked');return}
+w.document.write(`<title>${i.no}</title><body style="font-family:sans-serif;max-width:640px;margin:20px auto"><h2>Pooja Textile — Tax Invoice ${i.no}</h2><p>${i.date} · Due ${i.due}<br>To: <b>${esc(c.name)}</b>, ${esc(c.city)} ${esc(c.gstin)}</p><table width="100%" border="1" cellspacing="0" cellpadding="6"><tr><th>Item</th><th>Qty</th><th>Rate</th><th>Amt</th></tr>${i.items.map(x=>`<tr><td>${esc(K(x.sku).name)}</td><td>${x.qty}</td><td>${x.price}</td><td>${x.qty*x.price}</td></tr>`).join('')}</table><p>Subtotal ${inr(sub(i))}<br>GST ${i.gst}%: ${inr(sub(i)*i.gst/100)}<br><b>Total ${inr(tot(i))}</b> · Paid ${inr(i.paid)} · <b>Balance ${inr(bal(i))}</b></p><script>print()<\/script>`);w.document.close()}
+render();
+</script></body></html>
